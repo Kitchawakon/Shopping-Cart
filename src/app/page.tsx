@@ -25,14 +25,14 @@ export default function Home() {
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalCount, setTotalCount] = useState(0);
 
-  const handleAdd = (index) => {
+  const handleAdd = (index: number) => {
     const newCounts = [...counts];
     newCounts[index] += 1;
     setCounts(newCounts);
     calculateTotals(newCounts);
   };
 
-  const handleRemove = (index) => {
+  const handleRemove = (index: number) => {
     const newCounts = [...counts];
     if (newCounts[index] > 0) {
       newCounts[index] -= 1;
@@ -41,7 +41,7 @@ export default function Home() {
     }
   };
 
-  const calculateTotals = (counts) => {
+  const calculateTotals = (counts: number[]) => {
     const total = counts.reduce((sum, count, index) => sum + count * items[index].price, 0);
     const totalItemCount = counts.reduce((sum, count) => sum + count, 0);
     setTotalPrice(total);
@@ -49,7 +49,7 @@ export default function Home() {
   };
 
   // Helper function to format price with commas and suffix
-  const formatPrice = (price) => {
+  const formatPrice = (price: number) => {
     return new Intl.NumberFormat('th-TH', { style: 'currency', currency: 'THB' }).format(price);
   };
 
